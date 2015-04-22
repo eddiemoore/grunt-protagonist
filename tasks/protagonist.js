@@ -28,7 +28,7 @@ module.exports = function(grunt) {
     		return;
     	}
 
-    	// console.log(result.warnings);
+    	console.log(result.warnings);
     	if (result.warnings.length > 0) {
     		for (var i = 0, len = result.warnings.length; i < len; i++) {
     			var item = result.warnings[i];
