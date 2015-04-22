@@ -36,7 +36,13 @@
     "grunt": "~0.4.5"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "api",
+    "blueprint",
+    "protagonist"
+  ],
+  "files": [
+  	"tasks"
   ],
   "dependencies": {
     "protagonist": "^0.19.3"
