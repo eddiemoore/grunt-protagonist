@@ -13,38 +13,50 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
+  function pro(filepath) {
+  	if (!grunt.file.exists(filepath)) {
+    	return false;
+    }
+
+    var protagonist = require('protagonist');
+
+    protagonist.parse(file, function (err, result) {
+    	if (err) {
+    		console.log(err);
+    		return;
+    	}
+
+    	console.log(result.ast);
+    })
+  }
+
   grunt.registerMultiTask('protagonist', 'API Blueprint parser', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
+		if (!this.data) { return false; }
 
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+    var data = this.data,
+        file = null;
 
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
+    // we need to determine if this is a string or an array
+    if (typeof(data) === 'string' && (data instanceof Array === false)) {
+      // string
+      file = grunt.template.process(this.data);
+      pro(file);
+      //grunt.log.writeln("Folder \"" + file + "\" contents removed.");
+    } else if (data instanceof Array === true){
+      // array, loop through it
+      for (var i = 0; i < data.length; i++) {
+        file = grunt.template.process(data[i]);
+        pro(file);
+        //grunt.log.writeln("Folder \"" + file + "\" contents removed.");
+      }
+    } else {
+      // something else, throw an error
+      grunt.log.writeln("Protagonist accepts multiple targets, but each must use a string or array as data. E.g.:");
+      grunt.log.writeln("    protagonist : {");
+      grunt.log.writeln("        api : 'path/to/api',");
+      grunt.log.writeln("        apis : [ 'path/to/apiTwo', 'path/to/apiThree' ]");
+      grunt.log.writeln("    }");
+    }
   });
 
 };
