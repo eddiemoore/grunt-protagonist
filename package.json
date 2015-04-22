@@ -1,0 +1,41 @@
+{
+  "name": "grunt-protagonist",
+  "description": "API Blueprint parser",
+  "version": "0.1.0",
+  "homepage": "https://github.com/eddiemoore/grunt-protagonist",
+  "author": {
+    "name": "Ed Moore",
+    "email": "eddie.moore@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eddiemoore/grunt-protagonist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eddiemoore/grunt-protagonist/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/eddiemoore/grunt-protagonist/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
