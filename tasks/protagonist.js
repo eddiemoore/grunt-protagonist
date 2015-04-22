@@ -14,7 +14,7 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
   function pro(filepath) {
-  	console.log(filepath)
+  	console.log(filepath, grunt.file.exists(filepath))
   	if (!grunt.file.exists(filepath)) {
     	return false;
     }
