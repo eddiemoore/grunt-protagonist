@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
   function pro(filepath) {
+  	console.log(filepath)
   	if (!grunt.file.exists(filepath)) {
     	return false;
     }
@@ -40,14 +41,13 @@ module.exports = function(grunt) {
     if (typeof(data) === 'string' && (data instanceof Array === false)) {
       // string
       file = grunt.template.process(this.data);
+      console.log('API File:', file);
       pro(file);
-      //grunt.log.writeln("Folder \"" + file + "\" contents removed.");
     } else if (data instanceof Array === true){
       // array, loop through it
       for (var i = 0; i < data.length; i++) {
         file = grunt.template.process(data[i]);
         pro(file);
-        //grunt.log.writeln("Folder \"" + file + "\" contents removed.");
       }
     } else {
       // something else, throw an error
