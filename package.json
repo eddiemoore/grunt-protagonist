@@ -1,7 +1,7 @@
 {
   "name": "grunt-protagonist",
   "description": "API Blueprint parser",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/eddiemoore/grunt-protagonist",
   "author": {
     "name": "Ed Moore",
