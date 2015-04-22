@@ -21,6 +21,7 @@ module.exports = function(grunt) {
     }
 
     var api = fs.readFileSync(filepath, 'utf8');
+    console.log('API:', api);
 
     protagonist.parse(api, function (err, result) {
     	if (err) {
@@ -28,7 +29,7 @@ module.exports = function(grunt) {
     		return;
     	}
 
-    	console.log(result);
+    	console.log('protagonist', result);
     	if (result.warnings.length > 0) {
     		for (var i = 0, len = result.warnings.length; i < len; i++) {
     			var item = result.warnings[i];
