@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 
     var protagonist = require('protagonist');
 
-    protagonist.parse(file, function (err, result) {
+    protagonist.parse(filepath, function (err, result) {
     	if (err) {
     		console.log(err);
     		return;
