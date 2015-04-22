@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
+  var protagonist = require('protagonist');
 
   function pro(filepath) {
   	console.log(filepath, grunt.file.exists(filepath))
@@ -19,15 +20,13 @@ module.exports = function(grunt) {
     	return false;
     }
 
-    var protagonist = require('protagonist');
-
     protagonist.parse(filepath, function (err, result) {
     	if (err) {
     		console.log(err);
     		return;
     	}
 
-    	console.log(result.ast);
+    	console.log(result);
     })
   }
 
