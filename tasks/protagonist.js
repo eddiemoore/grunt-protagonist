@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     var api = fs.readFileSync(filepath, 'utf8');
     console.log('API:', api);
 
-    protagonist.parse(api, function (err, result) {
+    protagonist.parse(api.toString(), function (err, result) {
     	if (err) {
     		console.log(err);
     		return;
