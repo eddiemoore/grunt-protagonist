@@ -21,7 +21,6 @@ module.exports = function(grunt) {
     }
 
     var api = fs.readFileSync(filepath, 'utf8');
-    console.log(api)
 
     protagonist.parse(api, function (err, result) {
     	if (err) {
@@ -29,7 +28,15 @@ module.exports = function(grunt) {
     		return;
     	}
 
-    	console.log(result.warnings);
+    	// console.log(result.warnings);
+    	if (result.warnings.length > 0) {
+    		for (var i = 0, len = result.warnings.length; i < len; i++) {
+    			var item = result.warnings[i];
+    			for (var k = 0; k < item.location.length; k++) {
+    				grunt.log.error(item.message + ' ' + item.location[k].index + ':' + item.location[k].length)
+    			}
+    		}
+    	}
     })
   }
 
