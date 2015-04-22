@@ -20,7 +20,8 @@ module.exports = function(grunt) {
     	return false;
     }
 
-    var api = fs.readFileSync(filepath);
+    var api = fs.readFileSync(filepath, 'utf8');
+    console.log(api)
 
     protagonist.parse(api, function (err, result) {
     	if (err) {
