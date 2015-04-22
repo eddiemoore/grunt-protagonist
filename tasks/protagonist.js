@@ -12,21 +12,23 @@ module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
+  var fs = require('fs');
   var protagonist = require('protagonist');
 
   function pro(filepath) {
-  	console.log(filepath, grunt.file.exists(filepath))
   	if (!grunt.file.exists(filepath)) {
     	return false;
     }
 
-    protagonist.parse(filepath, function (err, result) {
+    var api = fs.readFileSync(filepath);
+
+    protagonist.parse(api, function (err, result) {
     	if (err) {
     		console.log(err);
     		return;
     	}
 
-    	console.log(result);
+    	console.log(result.warnings);
     })
   }
 
@@ -40,7 +42,6 @@ module.exports = function(grunt) {
     if (typeof(data) === 'string' && (data instanceof Array === false)) {
       // string
       file = grunt.template.process(this.data);
-      console.log('API File:', file);
       pro(file);
     } else if (data instanceof Array === true){
       // array, loop through it
