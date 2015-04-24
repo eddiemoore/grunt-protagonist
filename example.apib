@@ -1,0 +1,23 @@
+# Group Users
+
+## Users [/users]
+### Create a new user [POST]
+
++ Attributes
+
+    + email (string, required) - User's email address
+    + username (string, required) - Username for user
+    + password (string, required) - Password for user
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+
+    + Body
+    
+            {
+              "email": "example@example.com",
+              "username": "foobar",
+              "password": "2xPaisdn",
+            }

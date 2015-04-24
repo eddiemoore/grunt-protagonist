@@ -9,6 +9,7 @@
 'use strict';
 
 var protagonist = require('protagonist');
+var fs = require('fs');
 
 module.exports = function(grunt) {
 
@@ -19,8 +20,7 @@ module.exports = function(grunt) {
       return false;
     }
 
-    var api = grunt.file.read(filepath)
-    // console.log(api);
+    var api = fs.readFileSync(filepath, 'utf8');
 
     protagonist.parse(api, function (err, result) {
       if (err) {
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       if (result.warnings.length > 0) {
         result.warnings.forEach(function (item, i, a) {
           item.location.forEach(function (loc, k, b) {
-            grunt.log.error(item.message + ' ' + loc.index + ':' + loc.length);
+            grunt.log.error(item.message + ' - line:' + api.substr(0, loc.index).split('\n').length);
           });
         });
       }
