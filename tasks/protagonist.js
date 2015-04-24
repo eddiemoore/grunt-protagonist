@@ -8,21 +8,23 @@
 
 'use strict';
 
+var protagonist = require('protagonist');
+
 module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
-  var protagonist = require('protagonist');
-
   function parseAPI(filepath) {
     if (!grunt.file.exists(filepath)) {
       return false;
     }
 
     var api = grunt.file.read(filepath)
-    console.log(api)
+    console.log(api);
 
-    protagonist.parse(api, function (err, result) {
+    console.log(protagonist);
+
+    protagonist.parse(api.toString(), function (err, result) {
       if (err) {
         console.log('ERROR!!!!', err);
         grunt.log.error(err);
