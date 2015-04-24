@@ -24,19 +24,17 @@ module.exports = function(grunt) {
 
     protagonist.parse(api, function (err, result) {
       if (err) {
-        console.log('ERROR!!!!', err);
         grunt.log.error(err);
         return;
       }
 
       console.log('protagonist', result);
       if (result.warnings.length > 0) {
-        for (var i = 0, len = result.warnings.length; i < len; i++) {
-          var item = result.warnings[i];
-          for (var k = 0; k < item.location.length; k++) {
-            grunt.log.error(item.message + ' ' + item.location[k].index + ':' + item.location[k].length)
-          }
-        }
+        result.warnings.forEach(function (item, i, a) {
+          item.location.forEach(function (loc, k, b) {
+            grunt.log.error(item.message + ' ' + loc.index + ':' + loc.length);
+          });
+        });
       }
     });
   }
