@@ -20,11 +20,9 @@ module.exports = function(grunt) {
     }
 
     var api = grunt.file.read(filepath)
-    console.log(api);
+    // console.log(api);
 
-    console.log(protagonist);
-
-    protagonist.parse(api.toString(), function (err, result) {
+    protagonist.parse(api, function (err, result) {
       if (err) {
         console.log('ERROR!!!!', err);
         grunt.log.error(err);
