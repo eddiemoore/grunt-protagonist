@@ -47,6 +47,8 @@ module.exports = function(grunt) {
     var data = this.data,
         file = null;
 
+    console.log(data)
+
     // we need to determine if this is a string or an array
     if (typeof(data) === 'string' && (data instanceof Array === false)) {
       // string
