@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         return;
       }
 
-      // console.log('protagonist', result);
+      console.log('protagonist', result);
       if (result.warnings.length > 0) {
         for (var i = 0, len = result.warnings.length; i < len; i++) {
           var item = result.warnings[i];
