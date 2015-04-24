@@ -15,12 +15,13 @@ module.exports = function(grunt) {
   var fs = require('fs');
   var protagonist = require('protagonist');
 
-  function pro(filepath) {
-    // if (!grunt.file.exists(filepath)) {
-    //   return false;
-    // }
+  function parseAPI(filepath) {
+    if (!grunt.file.exists(filepath)) {
+      return false;
+    }
 
     var api = fs.readFileSync(filepath, 'utf8');
+    console.log(typeof api)
 
     protagonist.parse(api, function (err, result) {
       if (err) {
@@ -37,7 +38,7 @@ module.exports = function(grunt) {
           }
         }
       }
-    })
+    });
   }
 
   grunt.registerMultiTask('protagonist', 'API Blueprint parser', function() {
@@ -49,12 +50,12 @@ module.exports = function(grunt) {
     // we need to determine if this is a string or an array
     if (typeof(data) === 'string' && (data instanceof Array === false)) {
       // string
-      pro(data);
+      parseAPI(data);
     } else if (data instanceof Array === true){
       // array, loop through it
       for (var i = 0; i < data.length; i++) {
         file = data[i];
-        pro(file);
+        parseAPI(file);
       }
     } else {
       // something else, throw an error
