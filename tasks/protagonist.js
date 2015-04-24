@@ -12,7 +12,6 @@ module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
-  var fs = require('fs');
   var protagonist = require('protagonist');
 
   function parseAPI(filepath) {
@@ -20,11 +19,12 @@ module.exports = function(grunt) {
       return false;
     }
 
-    var api = fs.readFileSync(filepath, 'utf8');
-    console.log(typeof api)
+    var api = grunt.file.read(filepath)
+    console.log(api)
 
     protagonist.parse(api, function (err, result) {
       if (err) {
+        console.log('ERROR!!!!', err);
         grunt.log.error(err);
         return;
       }
