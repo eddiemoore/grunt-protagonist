@@ -21,7 +21,6 @@ module.exports = function(grunt) {
     // }
 
     var api = fs.readFileSync(filepath, 'utf8');
-    // console.log('API:', api);
 
     protagonist.parse(api, function (err, result) {
       if (err) {
@@ -47,17 +46,14 @@ module.exports = function(grunt) {
     var data = this.data,
         file = null;
 
-    console.log(data)
-
     // we need to determine if this is a string or an array
     if (typeof(data) === 'string' && (data instanceof Array === false)) {
       // string
-      file = grunt.template.process(this.data);
-      pro(file);
+      pro(data);
     } else if (data instanceof Array === true){
       // array, loop through it
       for (var i = 0; i < data.length; i++) {
-        file = grunt.template.process(data[i]);
+        file = data[i];
         pro(file);
       }
     } else {
