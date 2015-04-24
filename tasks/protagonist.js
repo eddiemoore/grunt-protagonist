@@ -17,6 +17,7 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
   function parseAPI(filepath) {
     if (!grunt.file.exists(filepath)) {
+      grunt.fail.warn('File ' + filepath + ' doesn\'t exist')
       return false;
     }
 
@@ -24,7 +25,7 @@ module.exports = function(grunt) {
 
     protagonist.parse(api, function (err, result) {
       if (err) {
-        grunt.log.error(err);
+        grunt.fail.warn(err);
         return;
       }
 
@@ -32,7 +33,7 @@ module.exports = function(grunt) {
       if (result.warnings.length > 0) {
         result.warnings.forEach(function (item, i, a) {
           item.location.forEach(function (loc, k, b) {
-            grunt.log.error(item.message + ' - line:' + api.substr(0, loc.index).split('\n').length);
+            grunt.fail.warn(item.message + ' - line:' + api.substr(0, loc.index).split('\n').length);
           });
         });
       }
