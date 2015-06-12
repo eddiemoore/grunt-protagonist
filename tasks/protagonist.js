@@ -21,23 +21,18 @@ module.exports = function(grunt) {
       return false;
     }
 
-    var api = fs.readFileSync(filepath, 'utf8');
+    var api = fs.readFileSync(filepath, 'utf8'),
+        result = protagonist.parseSync(api);
 
-    protagonist.parse(api, function (err, result) {
-      if (err) {
-        grunt.fail.warn(err);
-        return;
-      }
-
-      console.log('protagonist', result);
-      if (result.warnings.length > 0) {
-        result.warnings.forEach(function (item, i, a) {
-          item.location.forEach(function (loc, k, b) {
-            grunt.fail.warn(item.message + ' - line:' + api.substr(0, loc.index).split('\n').length);
-          });
+    if (result.warnings.length > 0) {
+      var warnings = '';
+      result.warnings.forEach(function (item, i, a) {
+        item.location.forEach(function (loc, k, b) {
+          warnings += 'line:' + api.substr(0, loc.index).split('\n').length + ' - ' + item.message + "\n";
         });
-      }
-    });
+      });
+      grunt.fail.warn(warnings);
+    }
   }
 
   grunt.registerMultiTask('protagonist', 'API Blueprint parser', function() {

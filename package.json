@@ -42,9 +42,31 @@
     "protagonist"
   ],
   "files": [
-  	"tasks"
+    "tasks"
   ],
   "dependencies": {
-    "protagonist": "^0.19.3"
-  }
+    "protagonist": "^0.20.1"
+  },
+  "gitHead": "78ae4df8ee2e3845e029d26d295bea18a1bfca1b",
+  "_id": "grunt-protagonist@0.2.22",
+  "_shasum": "69866d98bb2970787cb64bb46b4c542cc51e21f5",
+  "_from": "grunt-protagonist@*",
+  "_npmVersion": "2.7.4",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "name": "eddiemoore",
+    "email": "eddie.moore@gmail.com"
+  },
+  "dist": {
+    "shasum": "69866d98bb2970787cb64bb46b4c542cc51e21f5",
+    "tarball": "http://registry.npmjs.org/grunt-protagonist/-/grunt-protagonist-0.2.22.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "eddiemoore",
+      "email": "eddie.moore@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/grunt-protagonist/-/grunt-protagonist-0.2.22.tgz"
 }
