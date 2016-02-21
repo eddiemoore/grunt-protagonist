@@ -33,7 +33,7 @@
     "grunt": "~0.4.5"
   },
   "peerDependencies": {
-    "grunt": "~0.4.5"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin",
@@ -42,7 +42,7 @@
     "protagonist"
   ],
   "files": [
-  	"tasks"
+    "tasks"
   ],
   "dependencies": {
     "protagonist": "^0.19.3"
