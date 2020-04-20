@@ -45,6 +45,6 @@
   	"tasks"
   ],
   "dependencies": {
-    "protagonist": "^0.19.3"
+    "protagonist": "^2.1.0"
   }
 }
